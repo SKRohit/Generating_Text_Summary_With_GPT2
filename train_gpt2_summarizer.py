@@ -155,8 +155,12 @@ def main():
 	valid_data = GPT21024Dataset(args.root_dir,args.ids_file,mode='valid',length=500)  #validation on only 500 datasets
 	tokenizer = add_special_tokens()
 	ignore_idx = tokenizer.pad_token_id
+    model = GPT2LMHeadModel.from_pretrained('gpt2')
+    model.resize_token_embeddings(len(tokenizer))
+    model.to(args.device)
+
 	start = time.time()
-	train(args,gptdata,model, ignore_idx)
+	train(args, model, tokenizer, train_data, valid_data, ignore_index)
 	print('total time: ', (time.time()-start)/60, " minutes", end='\n\n')
 
 	print('Saving trained model...')

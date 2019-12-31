@@ -99,6 +99,7 @@ def main(file_names, directory):
 		js['test_ids'] = test_ids
 		json.dump(js,f)
 
+	# file_id_map maps the json file ids to actual cnn/dm file names ending with ".story"
 	print("saving file_id_map...")
 	with open("file_id_map.pickle", 'wb') as f:
 		pickle.dump(file_id_map,f)
