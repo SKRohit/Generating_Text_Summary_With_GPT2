@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
 	#plot the distribution of articles sizes
 	plt.hist(sorted_article_values,color='blue',bins=6, edgecolor = 'black')
-	plt.title(name+"_Files_Distribution_By_Size(n. of words)")
+	plt.title(name+"_Files_Distribution_By_Size(no. of words)")
 	plt.xlabel('No Of Words')
 	plt.ylabel('Files')
 	plt.show()
