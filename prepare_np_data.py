@@ -8,7 +8,7 @@ import time
 
 import numpy as np
 
-from helper_functions import add_special_tokens
+from utils import add_special_tokens
 
 tokenizer = add_special_tokens()
 
