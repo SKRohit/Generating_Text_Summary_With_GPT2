@@ -1,0 +1,4 @@
+torch==1.2.0
+tqdm==4.28.1
+pytorch_transformers==2.21.0
+tensorboardX==1.12.0
