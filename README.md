@@ -22,4 +22,4 @@ $ python train_gpt2_summarizer.py --batch_size 1 --root_dir path/to/json/files/c
 ### [Sample Efficient Text Summarization Using a Single Pre-Trained Transformer](https://arxiv.org/abs/1905.08836)
 _Urvashi Khandelwal, Kevin Clark, Dan Jurafsky, Lukasz Kaiser_ <br>
 
-Most of the code in this repo has been adapted from huggingface [run_lm_finetuning.py](https://github.com/SKRohit/pytorch-transformers/blob/master/examples/run_lm_finetuning.py).
+Training code in this repo has been adapted from huggingface [run_lm_finetuning.py](https://github.com/SKRohit/pytorch-transformers/blob/master/examples/run_lm_finetuning.py).
