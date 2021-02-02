@@ -16,7 +16,6 @@ def calc_article_sizes(file_name, name):
 	
 	max_len = 0
 	article_sizes = {}
-	start = time.time()
 	print("Calculating",name, "Article Sizes......")
 	for i,file in zip(os.listdir(file_name)):
 		file = os.path.join(os.getcwd(),file_name,file)
@@ -34,6 +33,7 @@ def calc_article_sizes(file_name, name):
 
 if __name__ == '__main__':
 
+	start = time.time()
 	if sys.argv[1].startswith("cnn"):
 		name = "CNN"
 	else:
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 	print("saving_article_files_sizes_info...")
 	os.chdir(name)
 	with open(name+"_file_size.pickle", 'wb') as f:
-		pickle.dump(article, f)
+		pickle.dump(article_sizes, f)
 
 	#plot the distribution of articles sizes
 	plt.hist(sorted_article_values,color='blue',bins=6, edgecolor = 'black')
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
 	print('max_length_of_article_in_article: ',max_len, " and file_name is ", max_len_filename)
 	print("total_time_taken",(time.time()-start)/60, " minutes")
-	print("mean_length_of_article_articles: ", sum(article.values())/len(article))
+	print("mean_length_of_article_articles: ", sum(article_sizes.values())/len(article_sizes))
 	print("max_10_lengths_of_article_articles:", sorted_article_values[-50:])
 	print("number_of_articles_greater_than_1000_words: ", sum(sorted_article_values>1000))
 	print("number_of_articles_greater_than_1500_words: ", sum(sorted_article_values>1500))

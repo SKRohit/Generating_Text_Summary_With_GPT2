@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import Dataset
 from pytorch_transformers import GPT2Tokenizer
 
-from prepare_data import add_special_tokens
+from utils import add_special_tokens
 
 
 class GPT21024Dataset(Dataset):
