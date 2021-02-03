@@ -17,7 +17,7 @@ def calc_article_sizes(file_name, name):
 	max_len = 0
 	article_sizes = {}
 	print("Calculating",name, "Article Sizes......")
-	for i,file in zip(os.listdir(file_name)):
+	for i,file in enumerate(os.listdir(file_name)):
 		file = os.path.join(os.getcwd(),file_name,file)
 		with open(file,'r',encoding='utf-8') as f:
 			txt = f.read().split()

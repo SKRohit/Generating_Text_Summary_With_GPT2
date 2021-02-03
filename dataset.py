@@ -2,7 +2,7 @@ import os
 import json
 import torch
 from torch.utils.data import Dataset
-from pytorch_transformers import GPT2Tokenizer
+from transformers import GPT2Tokenizer
 
 from utils import add_special_tokens
 
