@@ -39,7 +39,7 @@ class GPT21024Dataset(Dataset):
         if self.mode=='valid':
             idx = self.idxs[-idx]
         elif self.mode=='test':
-            idx = self.idxs[2*(-idx)]
+            idx = self.idxs[-idx-self.len]   #assuming valid and test set of same sizes
         else:
             idx = self.idxs[idx]
         # file_name = os.path.join(self.root_dir,str(idx)+".json")
