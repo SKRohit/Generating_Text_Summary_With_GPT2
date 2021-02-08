@@ -7,7 +7,7 @@ import random
 import time
 
 import numpy as np
-from pytorch_transformers import ConstantLRSchedule, GPT2Config, GPT2LMHeadModel,AdamW, GPT2Tokenizer, WarmupLinearSchedule
+from transformers import ConstantLRSchedule, GPT2Config, GPT2LMHeadModel,AdamW, GPT2Tokenizer, WarmupLinearSchedule
 from tensorboardX import SummaryWriter
 import torch
 from torch.nn import CrossEntropyLoss
@@ -69,7 +69,7 @@ def train(args, model, tokenizer, train_dataset, valid_dataset, ignore_index):
                 print("loss:", loss.item(), end='\n\n')
                 if (step + 1)/args.gradient_accumulation_steps == 1.0:
                 	print('After 1st update: ', end='\n\n')
-                	generate_sample(valid_dataset, tokenizer, num=2, eval_step=False)
+                	generate_sample(valid_dataset, tokenizer, num=2, eval_step=False,device=args.device)
                 
                 
             if (step + 1) % (10*args.gradient_accumulation_steps) == 0:
@@ -77,7 +77,7 @@ def train(args, model, tokenizer, train_dataset, valid_dataset, ignore_index):
                 for key, value in results.items():
                     writer.add_scalar('eval_{}'.format(key), value, global_step)
                 print('After', global_step+1,'updates: ', end='\n\n')
-                generate_sample(valid_dataset, tokenizer, num=2, eval_step=True)
+                generate_sample(valid_dataset, tokenizer, num=2, eval_step=True,device=args.device)
                     
      
 
@@ -140,8 +140,8 @@ def main():
 	parser.add_argument("--gradient_accumulation_steps",default=32, type=int, required=True, help="gradient_accumulation_steps")
 	parser.add_argument("--batch_size",default=1, type=int, required=True, help="batch_size")
 	parser.add_argument("--num_workers",default=4, type=int, required=False, help="num of cpus available")
-	parser.add_argument("--device",default=torch.device('cuda'), required=False, help="torch.device object")
-	parser.add_argument("--num_train_epochs",default=5, type=int, required=True, help="no of epochs of training")
+	parser.add_argument("--device",default=torch.device('cpu'), required=False, help="torch.device object")
+	parser.add_argument("--num_train_epochs",default=1, type=int, required=True, help="no of epochs of training")
 	parser.add_argument("--output_dir",default=./output, type=str, required=True, help="path to save evaluation results")
 	parser.add_argument("--model_dir",default=./weights, type=str, required=True, help="path to save trained model")
 	parser.add_argument("--fp16",default=True, type=bool, required=False, help="whether to use 16-bit (mixed) precision (through NVIDIA apex) instead of 32-bit")
@@ -156,7 +156,7 @@ def main():
 	tokenizer = add_special_tokens()
 	ignore_idx = tokenizer.pad_token_id
    	model = GPT2LMHeadModel.from_pretrained('gpt2')
-    	model.resize_token_embeddings(len(tokenizer))
+    model.resize_token_embeddings(len(tokenizer))
    	model.to(args.device)
 
 	start = time.time()

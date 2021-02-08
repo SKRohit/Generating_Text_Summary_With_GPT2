@@ -1,3 +1,8 @@
 .vscode
 .ipynb_checkpoints
 __pycache__
+output/logs/
+345-config_O0_data3000_trained_after_5_epochs_only_sum_loss_ignr_pad.json
+345-model_O0_data3000_trained_after_5_epochs_only_sum_loss_ignr_pad.bin
+weights/config_data2_trained_after_1_epochs_only_sum_loss_ignr_pad.json
+weights/model_data2_trained_after_1_epochs_only_sum_loss_ignr_pad.bin
