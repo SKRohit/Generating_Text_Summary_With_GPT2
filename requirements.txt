@@ -1,3 +1,4 @@
 torch==1.2.0
 tqdm==4.28.1
 transformers==2.2.1
+googlesearch-python==2020.0.2
