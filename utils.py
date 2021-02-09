@@ -121,7 +121,7 @@ def beam_search(model, context, length, beam_size, device, temperature=1):
     return scores, sequences
 
 
-def generate_beam_sample(data, tokenizer, num=1, length=100, beam_size=3, device=torch.device('cuda')):
+def generate_beam_sample(data, tokenizer, model, num=1, length=100, beam_size=3, device=torch.device('cuda')):
     """ Generate summaries for "num" number of articles using beam search.
         Args:
             data = GPT21024Dataset object
