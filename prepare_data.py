@@ -1,11 +1,9 @@
 import json
 import os
 import pickle
-import random
 import sys
 import time
 
-import numpy as np
 from utils import add_special_tokens
 
 #tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
