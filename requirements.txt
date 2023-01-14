@@ -1,4 +1,4 @@
-torch==1.7.1
+torch==1.13.1
 tqdm==4.28.1
 transformers==2.2.1
 googlesearch-python
